@@ -13,7 +13,7 @@ constexpr float gamma = 0.1; // Could be 1 or 10
 
 int main(int argc, char* argv[]) {
   // MPI variable initialization
-  MPI_INIT(&argc, &argv);
+  MPI_Init(&argc, &argv);
 
   int rank, num_procs;
 
