@@ -6,12 +6,11 @@ Source: https://perso.univ-lyon1.fr/marc.buffat/COURS/COURSDF_HTML/node29.html
 
 We want to calculate the transverse temperature distribution in a flame. For this, we use a simple model, assuming that in the transverse direction (denoted $x$) there are heat exchanges only by diffusion and radiation.
 
-![flamme](flamme.png)
-
 With these assumptions, the stationary energy conservation equation in the $x$ direction is written as:
 
-$$ \underbrace{-\frac{\partial}{\partial}\left(\lambda\frac{\partial T}{\partial x}\right)}_{\mbox{diffusion}} + \underbrace{\sigma(T^{4}-T_{0}^{4})}_{\mbox{rayonnement}}=\underbrace{Q}_{\mbox{source}} $$
-
+$$
+\underbrace{-\frac{\partial}{\partial}\left(\lambda\frac{\partial T}{\partial x}\right)}_{\mbox{diffusion}} + \underbrace{\sigma(T^{4}-T_{0}^{4})}_{\mbox{rayonnement}}=\underbrace{Q}_{\mbox{source}}
+$$
   
 In this model, the energy $Q$ produced in the flame of width $2\delta$ by chemical reaction is diffused by conduction and radiated to the outside air at temperature $T_{0}$. For radiation, we have adopted a simple black body radiation model proportional to $T^{4}$ with a radiation constant $\sigma$. The temperature variations between the flame and the outside are significant (with a ratio of about 3 to 4), the conduction coefficient $\lambda$ depends on the temperature through a power law $\lambda(T)=\lambda_{0}T^{q}$. Finally, for the source term, we will choose a constant reaction term in the flame and zero outside.
 $$\frac{\partial T}{\partial x}(x=0)=0$$ 
@@ -42,8 +41,11 @@ To these equations, we add the 2 boundary conditions:
 1. the Neumann condition at $i=0$, translated as a mirror condition for the equation at $i=0$: $u_{-1}=u_{1}$,
 2. the Dirichlet condition at $i=N$: $u_{N}=1$.
 
-Thus, we obtain $N+1$ nonlinear equations for $N+1$ unknowns $\{u_{i}\}_{i=0,N}$, which we symbolically write as:
-$$F_{i}(u_{0},u_{1},..u_{j}...,u_{N})=0, \forall i=0,N$$
+Thus, we obtain $N+1$ nonlinear equations for $N+1$ unknowns $$\{u_{i}\}_{i=0,N}$$, which we symbolically write as:
+
+$$
+F_{i}(u_{0},u_{1},..u_{j}...,u_{N})=0, \forall i=0,N
+$$
 
 To numerically solve these equations, we transform the problem into an equivalent fixed-point problem:
 
@@ -52,18 +54,22 @@ $$u_{i}=G_{i}(u_{0},u_{1},..u_{j}...,u_{N}), \forall i=0,N$$
   
 From this system, we construct a sequence of values $\{u_{i}^{k}\}_{i=0,N}$ such that:
 
-$$u_{i}^{k+1}=G_{i}(u_{0}^{k},u_{1}^{k},..u_{j}^{k}...,u_{N}^{k}), \forall i=1,N$$
+$$
+u_{i}^{k+1}=G_{i}(u_{0}^{k},u_{1}^{k},..u_{j}^{k}...,u_{N}^{k}), \forall i=1,N
+$$
 
   
 If the sequence $\{u_{i}^{k}\}_{i=0,N}$ converges, it converges to a fixed point (i.e., a solution) and thus to the solution of the initial nonlinear problem. The convergence condition of the fixed-point sequence is given by the classical fixed-point theorem:
 
 **Fixed-point theorem:**
 
-The iterative sequence $(u^n)$ converges in the vicinity of a fixed point if and only if the Jacobian matrix $J$ of $G$: $J_{i,j}=\left(\frac{\partial G_{i}}{\partial u_{j}}\right)$, has a norm less than 1, i.e., has eigenvalues with magnitudes less than 1 in this vicinity.
+The iterative sequence $(u^n)$ converges in the vicinity of a fixed point if and only if the Jacobian matrix $J$ of $G$: $$J_{i,j}=\left(\frac{\partial G_{i}}{\partial u_{j}}\right)$$, has a norm less than 1, i.e., has eigenvalues with magnitudes less than 1 in this vicinity.
   
 ### Linearized Implicit Scheme
 
-$$\frac{u_{i}^{n+1}-u_{i}^{n}}{dt}-\left(\frac{\kappa_{i+\frac{1}{2}}^{n+1}\left(u_{i+1}^{n+1}-u_{i}^{n+1}\right)-\kappa_{i-\frac{1}{2}}^{n+1}\left(u_{i}^{n+1}-u_{i-1}^{n+1}\right)}{dx^{2}}\right)+\sigma\left(u_{i}^{n+1}\left(u_{i}^{n}\right)^{3}-1\right)=Q_{i}$$
+$$
+\frac{u_{i}^{n+1}-u_{i}^{n}}{dt}-\left(\frac{\kappa_{i+\frac{1}{2}}^{n+1}\left(u_{i+1}^{n+1}-u_{i}^{n+1}\right)-\kappa_{i-\frac{1}{2}}^{n+1}\left(u_{i}^{n+1}-u_{i-1}^{n+1}\right)}{dx^{2}}\right)+\sigma\left(u_{i}^{n+1}\left(u_{i}^{n}\right)^{3}-1\right)=Q_{i}
+$$
 
 This scheme can also be written as a fixed-point iteration:
 
@@ -71,13 +77,15 @@ $$\left[u_{i}^{n+1}\right]=\mathcal{A}^{-1}\left[u_{i}^{n}+dt (Q_{i}+\sigma)\rig
 
 where $\mathcal{A}$ is the following tridiagonal matrix of order $N+1$:
 
-$$\mathcal{A}=\left[\begin{array}{cccccc}
+$$
+\mathcal{A}=\left[\begin{array}{cccccc}
 a_{0} & 2 b_0 & 0 & & 0 & 0\\
 c_{1} & a_{1} & b_{1} & & 0 & 0\\
 0 & c_{2} & a_{2} & \ddots & 0 & 0\\
 & & \ddots & \ddots & \ddots & \\
 0& 0 & 0 & \ddots & a_{N-1} & b_{N-1}\\
-0 & 0 & 0 & & 0 & 1\end{array}\right]$$
+0 & 0 & 0 & & 0 & 1\end{array}\right]
+$$
 
 with
 
