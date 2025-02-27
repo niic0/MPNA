@@ -1,0 +1,3 @@
+/home/nico/Desktop/courses/hpc_inge/mpna/01-matrix-matrix/build-debug/CMakeFiles/matrix-matrix.dir
+/home/nico/Desktop/courses/hpc_inge/mpna/01-matrix-matrix/build-debug/CMakeFiles/edit_cache.dir
+/home/nico/Desktop/courses/hpc_inge/mpna/01-matrix-matrix/build-debug/CMakeFiles/rebuild_cache.dir
