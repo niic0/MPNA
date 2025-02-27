@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
   HYPRE_IJMatrixSetObjectType(ij_matrix, HYPRE_PARCSR);
   HYPRE_IJMatrixInitialize(ij_matrix);
 
-  for(size_t i = 0; i<N; i++) 
+  //for(size_t i = 0; i<N; i++) 
   /* set matrix coefficients */
   //  HYPRE_IJMatrixSetValues(ij_matrix, nrows, ncols, rows, cols, values);
   /* add-to matrix cofficients, if desired */
