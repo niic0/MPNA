@@ -44,7 +44,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake --regenerate-during-build -S/home/nico/Desktop/courses/IHPS/mpna/matrix-lib -B/home/nico/Desktop/courses/IHPS/mpna/matrix-lib/build
+  command = /usr/bin/cmake --regenerate-during-build -S/home/nico/Desktop/courses/IHPS/mpna/02-iterative-relaxation -B/home/nico/Desktop/courses/IHPS/mpna/02-iterative-relaxation/build
   description = Re-running CMake...
   generator = 1
 
