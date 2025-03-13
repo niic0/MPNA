@@ -17,15 +17,14 @@ public:
                                  const std::vector<double> &u);
     void printMatrix(const std::vector<std::vector<double>> &A) const;
     void printVector(const std::vector<double>& v) const;
+    double kappa(double u) const;
+    double Q(double x) const;
 
-private:
+  private:
     size_t N;        ///< Number of grid points
     double dx;       ///< Grid spacing
     double k0;       ///< Conductivity coefficient
     double sigma;    ///< Radiation coefficient
     double beta;     ///< Source term coefficient
     double delta;    ///< Flame width
-
-    double kappa(double u) const;
-    double Q(double x) const;
 };
