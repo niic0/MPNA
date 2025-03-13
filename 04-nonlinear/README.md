@@ -70,7 +70,7 @@ Where:
 The governing equation for nonlinear diffusion is given by:
 
 $$
--frac{\partial}{\partial x} \left( \kappa(u) frac{\partial u}{\partial x}) + \sigma (u^4 - 1) = Q(x)
+-frac{\partial}{\partial x} \left( \kappa(u) frac{\partial u}{\partial x}) + \right (sigma (u^4 - 1)) = Q(x)
 $$
 
 where:
@@ -82,11 +82,11 @@ where:
 The PDE is discretized using central differences:
 
 $$
-- \left(frac{\kappa_{i+frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \sigma (u_i^4 - 1) = Q_i
+\left(frac{\kappa_{i+frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \sigma (u_i^4 - 1) = Q_i
 $$
 
 Boundary conditions are applied:
-- *Neumann* at $x = 0$: $frac{du}{dx}(0) = 0$
+- *Neumann* at $x = 0$: $\frac{du}{dx}(0) = 0$
 - *Dirichlet* at $x = 1$: $u(1) = 1$
 
 ### Implicit Scheme Implementation
@@ -105,7 +105,7 @@ where $A$ is the system matrix stored in **HYPRE** using the IJ interface. The s
 For full nonlinear solving, Newton-Raphson iterations are used:
 
 1. Compute the Jacobian matrix:
-   $J_{i,j} = frac{\partial F_i}{\partial u_j}$
+   $J_{i,j} = \frac{\partial F_i}{\partial u_j}$
 2. Solve the Newton update equation:
    $u^{k+1} = u^k - J^{-1} F(u^k)$
 3. Use **HYPRE** to solve the Jacobian system.
