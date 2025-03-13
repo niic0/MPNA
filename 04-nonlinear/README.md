@@ -52,20 +52,6 @@ These parameters can be modified in **main.cpp**:
 | `tol`       | Convergence tolerance              |
 | `max_iters` | Maximum number of iterations       |
 
-### Output
-The program prints the iteration details to the console:
-
-```
-Iteration 0  u_max: 1.1  dt: 0.0017132  Error: 0.0882982
-Iteration 1  u_max: 1.72077  dt: 0.000698282  Error: 0.384564
-...
-```
-
-Where:
-- `u_max` is the maximum temperature at each step.
-- `dt` is the computed time step.
-- `Error` is the difference from the previous iteration.
-
 ## Mathematical Formulation
 The governing equation for nonlinear diffusion is given by:
 
