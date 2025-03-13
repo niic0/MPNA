@@ -24,19 +24,14 @@ int main(int argc, char *argv[]) {
   // Initial condition
   std::vector<double> u(N, 1.0);
   u[0] = 1.1; // Ensures u_max > 1
-
-  if (rank == 0)
-    std::cout << "\nSolving with Implicit Scheme...\n";
   solver.solveImplicitScheme(u, tol, max_iters);
 
   // Reset u for Newton-Raphson
   std::fill(u.begin(), u.end(), 1.0);
   u[0] = 1.1;
-
-  if (rank == 0)
-    std::cout << "\nSolving with Newton-Raphson...\n";
   solver.solveNewtonRaphson(u, tol, max_iters);
 
+  solver.printSummary();
   MPI_Finalize();
   return 0;
 }
