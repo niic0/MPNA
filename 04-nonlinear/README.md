@@ -82,7 +82,7 @@ where:
 The PDE is discretized using central differences:
 
 $$
-\left(frac{\kappa_{i+frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \sigma (u_i^4 - 1) = Q_i
+\left(\frac{\kappa_{i+\frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-\frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \sigma (u_i^4 - 1) = Q_i
 $$
 
 Boundary conditions are applied:
