@@ -70,7 +70,7 @@ Where:
 The governing equation for nonlinear diffusion is given by:
 
 $$
--frac{\partial}{\partial x} \left( \kappa(u) frac{\partial u}{\partial x}) + \right (sigma (u^4 - 1)) = Q(x)
+-\frac{\partial}{\partial x} \left( \kappa(u) \frac{\partial u}{\partial x}) + \right (\sigma (u^4 - 1)) = Q(x)
 $$
 
 where:
@@ -82,7 +82,7 @@ where:
 The PDE is discretized using central differences:
 
 $$
-\left(\frac{\kappa_{i+\frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-\frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \sigma (u_i^4 - 1) = Q_i
+\left(\frac{\kappa_{i+\frac{1}{2}} (u_{i+1} - u_i) - \kappa_{i-\frac{1}{2}} (u_i - u_{i-1})}{dx^2}) + \right \sigma (u_i^4 - 1) = Q_i
 $$
 
 Boundary conditions are applied:
